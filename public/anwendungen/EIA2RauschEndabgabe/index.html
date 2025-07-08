@@ -1,0 +1,92 @@
+<!-- 
+Name: Herbert Gerasimov
+Stundiengang: MKB 5
+Matrikelnummer: 268382
+Studienleistung: EIA 2
+Dozent: Prof. Dr. Gabriel Rausch
+E-Mail: herbert.gerasimov@web.de
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360&deg; Image</title>
+    <meta name="Cine Dventure" content="360&deg; Image - A-Frame">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="star2.js"></script>
+  </head>
+  <body>
+    <a-scene  cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
+      <a-assets>
+        <audio id="atmo" src="Assits/kinomusik.mp3"></audio>
+        <img src="Assits/harryposter.jpg" id="HA"></img>
+        <img src="Assits/matrixposter.jpg" id="MA"></img>
+        <img src="Assits/interstellarposter.jpg" id="IN"></img>
+        <img src="Assits/starwarsposter.jpg" id="ST"></img>
+      </a-assets>
+      <a-camera>
+      </a-camera>
+      
+  
+      <a-sky id="BG" src="Assits/cinema_hall-2.jpg" rotation=" 10 0 0" boost-boost2></a-sky>
+
+      <a-sound id="AT" autoplay="true" src="#atmo" loop="true" volume="1"></a-sound>
+      
+      <a-mixin
+        id="frame"
+        geometry="primitive: plane; width: 0.5783552; height: 0.8192"
+        material="color: #9e1e33; shader: flat"
+        animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+        animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+       ></a-mixin>
+
+       <a-mixin
+        id="poster"
+        geometry="primitive: plane; width: 0.544768; height: 0.786432"
+        material="color: white; shader: flat"
+        material="shader: flat"
+        position="0 0 0.005"
+       ></a-mixin>
+
+       <a-mixin
+        id="movieImage"
+        geometry="primitive: plane; width: 1.5; height: 0.81"
+        material="src: #ponyo; shader: flat; transparent: true"
+        position="0 0.495 0.002"
+       ></a-mixin>
+    
+
+    <a-entity id="ui" position="-0.25 2.2 -2">
+      <a-entity id="menu" highlight>
+        <a-entity position="-1.75 -2.5 -1">
+            <a-text value="Click on the movie you want to enter."
+                    width="4"
+                    wrap-count="30"
+                    color="white"
+                    font="https://cdn.aframe.io/fonts/Exo2SemiBold.fnt"
+                    rotation="-60 0 0"
+                    >
+            </a-text>
+          </a-entity>
+
+        <a-entity  position="-0.8 0 0" mixin="frame" class="raycastable menu-button" link="href: intersteller.html">
+        <a-entity material="src: #IN;" mixin="poster"></a-entity>  
+        </a-entity>
+
+        <a-entity  position="0 0 0" mixin="frame" class="raycastable menu-button" link="href: harrypotter.html">
+          <a-entity material="src: #HA" mixin="poster"></a-entity>
+        </a-entity>
+
+        <a-entity  position="0.8 0 0" mixin="frame" class="raycastable menu-button" link="href: matrix.html">
+          <a-entity material="src: #MA" mixin="poster"></a-entity>
+        </a-entity>
+      </a-entity>
+
+      <a-entity  position="1.6 0 0" mixin="frame" class="raycastable menu-button" link="href: starwars.html">
+        <a-entity material="src: #ST" mixin="poster"></a-entity>
+      </a-entity>
+    </a-entity>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>360&deg; Image</title>
+    <meta name="description" content="360&deg; Image - A-Frame">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="star2.js"></script>
+    <script src="starwars.js"></script>
+
+</head>
+
+<body>
+    <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
+        <a-assets>
+            <audio id="rocket" src="Assits/rocket2.mp3"></audio>
+            <audio id="atmo" src="Assits/lava.mp3"></audio>
+            <img src="Assits/back.png" id="back"></img>
+            <img src="Assits/boost.png" id="boost"></img>
+            <img src="Assits/boostgrey.png" id="boost2"></img>
+            <img src="Assits/pause2.png" id="pause">
+            <img src="Assits/play2.png" id="play">
+            <video id="VideoInter" src="Assits/StarWarsVideo.mp4" loop="true" autoplay="true"></video>
+        </a-assets>
+        <a-camera>
+        </a-camera>
+
+        <a-sky id="BG" src="Assits/starwars.jpg" rotation=" 0 0 0" boost-boost2></a-sky>
+
+        <a-sound id="AT" autoplay="true" src="#atmo" loop="true" volume="1"></a-sound>
+        <a-sound id="RK" autoplay="true" src="#" loop="true" volume="0" boost-boost2></a-sound>
+
+
+        <a-video src="#VideoInter" width="16" height="9" position="0 5 -13" rotation="0 0 0"></a-video>
+
+        <a-image id="videoControls" src="#play" position="0 2 -10" class="raycastable" pause-play></a-image>
+
+
+        <a-entity class="raycastable" link="href: index.html">
+            <a-image src="#back" position="1.4 1.8 -1.5" rotation="0 -90 0" class="raycastable"></a-image>
+        </a-entity>
+
+        <a-entity position="-0.3 1.45 -1">
+            <a-text value="Click on the playbutton to start the movie." width="10" wrap-count="50" color="white"
+                font="https://cdn.aframe.io/fonts/Exo2SemiBold.fnt" rotation="0 0 0" scale="0.1 0.1 0.1">
+            </a-text>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
